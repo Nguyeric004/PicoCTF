@@ -20,3 +20,4 @@ Convert number 42 in base 10 to binary in base 2
     flag: picoCTF{101010}
 
 #Learned
+How to do multi-step conversions within CyberChef
