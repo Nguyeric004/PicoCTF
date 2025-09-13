@@ -19,4 +19,6 @@ Find the flag using the password checker script
     8713
 6. Extracted flag from script
     flagpicoCTF{545h_r1ng1ng_1b2fd683}
+
 #Learned
+How to check the contents of a file inside terminal
