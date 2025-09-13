@@ -19,7 +19,7 @@ Find the flag inside a flag.txt.en file using a python script with the password 
 6. Returned example use, examined contents of pw.txt to paste into password prompt and executed python script with password
     cat pw.txt
     python ende.py -d flag.txt.en
-7. Extracted password from script
+7. Extracted flag from script
     flag: picoCTF{4p0110_1n_7h3_h0us3_67c6cc96}
 
 #Learned
