@@ -9,7 +9,7 @@ Figure out what is in the eax register then put your answer in the picoCTF flag 
 2. Checked contents of directory
     ls
 3. Found debugger0_a file, tried using gdb to debug
-    gdb
+    gdb debugger0_a
     disassemble main
 4. Debugging successful, found 0x86342 value moved into eax register. 
 5. Used CyberChef From Base recipe with radix 16 to convert hexadecimal value to decimal
