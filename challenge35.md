@@ -1,0 +1,118 @@
+#Challenge: ASCII FTW
+
+#Objective
+Find the flag taht has been converted into ASCII format inside the assembly file
+
+#Solution Steps
+1. Downloaded all necessary files
+    wget https://artifacts.picoctf.net/c/507/asciiftw
+2. Checked contents of directory
+    ls
+3. Found asciiftw file, made file executable
+    chmod +x asciiftw
+4. Opened file in gdb
+    gdb asciiftw
+5. Disassemled file
+    disassmble main
+6. Found list of assigned variables
+    0x0000000000001184 <+27>:    movb   $0x70,-0x30(%rbp)   
+    0x0000000000001188 <+31>:    movb   $0x69,-0x2f(%rbp)  
+    0x000000000000118c <+35>:    movb   $0x63,-0x2e(%rbp)  
+    0x0000000000001190 <+39>:    movb   $0x6f,-0x2d(%rbp)  
+    0x0000000000001194 <+43>:    movb   $0x43,-0x2c(%rbp)  
+    0x0000000000001198 <+47>:    movb   $0x54,-0x2b(%rbp)  
+    0x000000000000119c <+51>:    movb   $0x46,-0x2a(%rbp)  
+    0x00000000000011a0 <+55>:    movb   $0x7b,-0x29(%rbp)  
+    0x00000000000011a4 <+59>:    movb   $0x41,-0x28(%rbp)  
+    0x00000000000011a8 <+63>:    movb   $0x53,-0x27(%rbp)  
+    0x00000000000011ac <+67>:    movb   $0x43,-0x26(%rbp)  
+    0x00000000000011b0 <+71>:    movb   $0x49,-0x25(%rbp)  
+    0x00000000000011b4 <+75>:    movb   $0x49,-0x24(%rbp)  
+    0x00000000000011b8 <+79>:    movb   $0x5f,-0x23(%rbp)  
+    0x00000000000011bc <+83>:    movb   $0x49,-0x22(%rbp)  
+    0x00000000000011c0 <+87>:    movb   $0x53,-0x21(%rbp)  
+    0x00000000000011c4 <+91>:    movb   $0x5f,-0x20(%rbp)  
+    0x00000000000011c8 <+95>:    movb   $0x45,-0x1f(%rbp)  
+    0x00000000000011cc <+99>:    movb   $0x41,-0x1e(%rbp)  
+    0x00000000000011d0 <+103>:   movb   $0x53,-0x1d(%rbp)  
+    0x00000000000011d4 <+107>:   movb   $0x59,-0x1c(%rbp)  
+    0x00000000000011d8 <+111>:   movb   $0x5f,-0x1b(%rbp)  
+    0x00000000000011dc <+115>:   movb   $0x37,-0x1a(%rbp)  
+    0x00000000000011e0 <+119>:   movb   $0x42,-0x19(%rbp)  
+    0x00000000000011e4 <+123>:   movb   $0x43,-0x18(%rbp)  
+    0x00000000000011e8 <+127>:   movb   $0x44,-0x17(%rbp)  
+    0x00000000000011ec <+131>:   movb   $0x39,-0x16(%rbp)  
+    0x00000000000011f0 <+135>:   movb   $0x37,-0x15(%rbp)  
+    0x00000000000011f4 <+139>:   movb   $0x31,-0x14(%rbp)  
+    0x00000000000011f8 <+143>:   movb   $0x44,-0x13(%rbp)  
+    0x00000000000011fc <+147>:   movb   $0x7d,-0x12(%rbp)  
+7. Simplified variables
+    0x0000000000001184 <+27>:    movb   $0x70,-0x30(%rbp)  => var -0x30 = 0x70 
+    0x0000000000001188 <+31>:    movb   $0x69,-0x2f(%rbp)  => var -0x2f = 0x69
+    0x000000000000118c <+35>:    movb   $0x63,-0x2e(%rbp)  => var -0x2e = 0x63
+    0x0000000000001190 <+39>:    movb   $0x6f,-0x2d(%rbp)  => var -0x2d = 0x6f
+    0x0000000000001194 <+43>:    movb   $0x43,-0x2c(%rbp)  => var -0x2c = 0x43
+    0x0000000000001198 <+47>:    movb   $0x54,-0x2b(%rbp)  => var -0x2b = 0x54
+    0x000000000000119c <+51>:    movb   $0x46,-0x2a(%rbp)  => var -0x2a = 0x46
+    0x00000000000011a0 <+55>:    movb   $0x7b,-0x29(%rbp)  => var -0x29 = 0x7b
+    0x00000000000011a4 <+59>:    movb   $0x41,-0x28(%rbp)  => var -0x28 = 0x41
+    0x00000000000011a8 <+63>:    movb   $0x53,-0x27(%rbp)  => var -0x27 = 0x53
+    0x00000000000011ac <+67>:    movb   $0x43,-0x26(%rbp)  => var -0x26 = 0x43
+    0x00000000000011b0 <+71>:    movb   $0x49,-0x25(%rbp)  => var -0x25 = 0x49
+    0x00000000000011b4 <+75>:    movb   $0x49,-0x24(%rbp)  => var -0x24 = 0x49
+    0x00000000000011b8 <+79>:    movb   $0x5f,-0x23(%rbp)  => var -0x23 = 0x5f
+    0x00000000000011bc <+83>:    movb   $0x49,-0x22(%rbp)  => var -0x22 = 0x49
+    0x00000000000011c0 <+87>:    movb   $0x53,-0x21(%rbp)  => var -0x21 = 0x53
+    0x00000000000011c4 <+91>:    movb   $0x5f,-0x20(%rbp)  => var -0x20 = 0x5f
+    0x00000000000011c8 <+95>:    movb   $0x45,-0x1f(%rbp)  => var -0x1f = 0x45
+    0x00000000000011cc <+99>:    movb   $0x41,-0x1e(%rbp)  => var -0x1e = 0x41
+    0x00000000000011d0 <+103>:   movb   $0x53,-0x1d(%rbp)  => var -0x1d = 0x53
+    0x00000000000011d4 <+107>:   movb   $0x59,-0x1c(%rbp)  => var -0x1c = 0x59
+    0x00000000000011d8 <+111>:   movb   $0x5f,-0x1b(%rbp)  => var -0x1b = 0x5f
+    0x00000000000011dc <+115>:   movb   $0x37,-0x1a(%rbp)  => var -0x1a = 0x37
+    0x00000000000011e0 <+119>:   movb   $0x42,-0x19(%rbp)  => var -0x19 = 0x42
+    0x00000000000011e4 <+123>:   movb   $0x43,-0x18(%rbp)  => var -0x18 = 0x43
+    0x00000000000011e8 <+127>:   movb   $0x44,-0x17(%rbp)  => var -0x17 = 0x44
+    0x00000000000011ec <+131>:   movb   $0x39,-0x16(%rbp)  => var -0x16 = 0x39
+    0x00000000000011f0 <+135>:   movb   $0x37,-0x15(%rbp)  => var -0x15 = 0x37
+    0x00000000000011f4 <+139>:   movb   $0x31,-0x14(%rbp)  => var -0x14 = 0x31
+    0x00000000000011f8 <+143>:   movb   $0x44,-0x13(%rbp)  => var -0x13 = 0x44
+    0x00000000000011fc <+147>:   movb   $0x7d,-0x12(%rbp)  => var -0x12 = 0x7d
+8. Converted hex ascii values to decimal values
+    var -0x30 = p 
+    var -0x2f = i
+    var -0x2e = c
+    var -0x2d = o
+    var -0x2c = C
+    var -0x2b = T
+    var -0x2a = F
+    var -0x29 = {
+    var -0x28 = A
+    var -0x27 = S    
+    var -0x26 = C
+    var -0x25 = I
+    var -0x24 = I
+    var -0x23 = _
+    var -0x22 = I
+    var -0x21 = S
+    var -0x20 = _
+    var -0x1f = E
+    var -0x1e = A
+    var -0x1d = S
+    var -0x1c = Y
+    var -0x1b = _
+    var -0x1a = 7
+    var -0x19 = B
+    var -0x18 = C
+    var -0x17 = D
+    var -0x16 = 9
+    var -0x15 = 7
+    var -0x14 = 1
+    var -0x13 = D
+    var -0x12 = }
+9. Extracted flag from varaibles
+    flag: picoCTF{ASCII_IS_EASY_7BCD971D}
+
+
+#Learned
+How to use cutter to reverse engineer a program on unix
